@@ -1,0 +1,43 @@
+body:not(.v-theme--dark) input:-webkit-autofill,
+body:not(.v-theme--dark) input:-webkit-autofill:hover,
+body:not(.v-theme--dark) input:-webkit-autofill:focus,
+body:not(.v-theme--dark) input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-in-out 0s;
+  color: inherit !important;
+}
+
+body.v-theme--dark input:-webkit-autofill,
+body.v-theme--dark input:-webkit-autofill:hover,
+body.v-theme--dark input:-webkit-autofill:focus,
+body.v-theme--dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-in-out 0s;
+  color: inherit !important;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  75% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
