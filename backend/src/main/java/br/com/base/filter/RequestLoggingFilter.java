@@ -3,10 +3,10 @@ package br.com.base.filter;
 import java.io.IOException;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.base.domain.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,12 +23,15 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 	    String method = request.getMethod();
 	    String uri = request.getRequestURI();
 	    String ip = request.getRemoteAddr();
-	    String username = null;
-	    
-	    if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User user) {
-	    	username = user.getEmail();
-	    } else {
-	    	username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    String username = "anonymousUser"; // Valor padrão
+
+	    // Lógica corrigida para obter o nome de usuário
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+	    if (principal instanceof UserDetails userDetails) {
+	        username = userDetails.getUsername();
+	    } else if (principal instanceof String principalString) {
+	        username = principalString;
 	    }
 
 	    long start = System.currentTimeMillis();

@@ -2,11 +2,9 @@ package br.com.base.security;
 
 import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,17 +25,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String email) {
-		User user = userRepository.findByEmail(email).orElseThrow(() -> new NoSuchElementException("User not found"));
+	    User user = userRepository.findByEmail(email)
+	            .orElseThrow(() -> new NoSuchElementException("User not found"));
 
-		Set<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(SimpleGrantedAuthority::new)
-				.collect(Collectors.toSet());
+	    // 1. Criamos a instância de CustomUserDetails. 
+	    // Ele contém a lógica para buscar as "authorities".
+	    CustomUserDetails customUserDetails = new CustomUserDetails(user);
 
-		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
-		authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
-		return new CustomUserDetails(user);
+	    // 2. Usamos o customUserDetails como principal e passamos sua coleção 
+	    // de authorities diretamente para o construtor do Token.
+	    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+	            customUserDetails,
+	            null,
+	            customUserDetails.getAuthorities()); // Correção aqui
+
+	    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+	    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+	    return customUserDetails;
 	}
 	
 }
