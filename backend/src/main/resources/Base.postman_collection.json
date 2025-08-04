@@ -1,167 +1,212 @@
 {
 	"info": {
-		"_postman_id": "05dc26e1-9c67-4c61-8792-5d391e7704ea",
-		"name": "Base",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11607936"
+		"_postman_id": "48daa396-0fbd-4085-a730-8ecd4208faff",
+		"name": "REST Mundaça",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41256350"
 	},
 	"item": [
 		{
 			"name": "login",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"base@base.com\",\r\n\t\"password\": \"base1234\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/api/v1/auth/login",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get users",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/api/v1/users?page=0&size=5&sort=id,asc",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"users"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "0"
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
 						},
-						{
-							"key": "size",
-							"value": "5"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"base@base.com\",\r\n\t\"password\": \"base1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "sort",
-							"value": "id,asc"
+						"url": "localhost:8080/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/users?page=0&size=5&sort=id,asc",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "save users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Eduardo\",\r\n    \"email\": \"\",\r\n    \"roles\": [\"ROLE_ADMIN\"],\r\n    \"password\": \"senha123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/api/v1/users"
+					},
+					"response": []
+				},
+				{
+					"name": "validate",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/v1/auth/validate"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": "localhost:8080/api/v1/auth/logout"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "save users",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Eduardo\",\r\n    \"email\": \"\",\r\n    \"roles\": [\"ROLE_ADMIN\"],\r\n    \"password\": \"senha123456789\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/api/v1/users",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"users"
-					]
+			"name": "task",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Empacotar livros da estante\",\r\n    \"description\": \"Usar caixas pequenas para não ficar muito pesado.\",\r\n    \"status\": \"PENDING\",\r\n    \"priority\": \"MEDIUM\",\r\n    \"deadline\": \"2025-08-15\",\r\n    \"category\": \"BEFORE_MOVE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/tasks"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "validate",
-			"request": {
-				"auth": {
-					"type": "noauth"
+			"name": "room",
+			"item": [
+				{
+					"name": "post rooms listar por id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Cozinha\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/rooms"
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/api/v1/auth/validate",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"validate"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "logout",
-			"request": {
-				"auth": {
-					"type": "noauth"
+				{
+					"name": "get rooms listar comodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/rooms"
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/api/v1/auth/logout",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"logout"
-					]
+				{
+					"name": "put rooms - renomear.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Cozinhaaa\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/rooms/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rooms por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Cozinhaaa\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/rooms/1"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
