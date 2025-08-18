@@ -6,8 +6,8 @@ import UserView from '@/views/UserView.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import TaskView from '@/views/TaskView.vue'
-import ShoppingView from '@/views/ShoppingView.vue';
-import BudgetView from '@/views/BudgetView.vue';
+import ShoppingView from '@/views/ShoppingView.vue'
+import BudgetView from '@/views/BudgetView.vue'
 
 
 const router = createRouter({
