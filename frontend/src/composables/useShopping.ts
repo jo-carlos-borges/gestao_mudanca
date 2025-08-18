@@ -4,13 +4,11 @@ import { useToast } from '@/composables/useToast'
 import { useConfirm } from '@/composables/useConfirm'
 import { parseError } from '@/utils/errorHandler'
 
-// --- Interfaces ---
 export interface Room {
   id: number
   name: string
 }
 
-// Adicionei mais campos para usarmos na edição
 export interface ShoppingItem {
   id: number
   name: string
@@ -18,22 +16,22 @@ export interface ShoppingItem {
   status: string
   priority: string
   roomId: number
-  room?: Room // Opcional, para exibição
+  room?: Room
 }
 
 export function useShopping() {
   const { showToast } = useToast()
   const { showConfirm } = useConfirm()
 
-  // --- Estado para Cômodos (Rooms) ---
+  // --- Estado para Cômodos (Rooms)
   const rooms = ref<Room[]>([])
   const loadingRooms = ref(false)
 
-  // --- Estado para Itens de Compra (ShoppingItems) ---
-  const items = ref<any[]>([]) // Mudei para 'any' para aceitar o objeto completo da API
+  // --- Estado para Itens de Compra (ShoppingItems)
+  const items = ref<any[]>([])
   const loadingItems = ref(false)
 
-  // --- Funções para Cômodos (sem alterações) ---
+  // --- Funções para Cômodos
   async function fetchRooms() {
     try {
       loadingRooms.value = true

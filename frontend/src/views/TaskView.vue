@@ -31,7 +31,7 @@ const priorityColors: Record<TaskPriority, string> = {
   URGENT: 'red',
 }
 
-// --- Mapeamento de Labels (TRADUÇÕES) ---
+// --- Mapeamento de Labels
 const statusLabels: Record<TaskStatus, string> = {
   PENDING: 'Pendente',
   IN_PROGRESS: 'Em Progresso',

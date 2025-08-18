@@ -14,7 +14,7 @@ const isUpdatingRoom = ref(false)
 // --- Lógica de Itens de Compra ---
 const showItemForm = ref(false)
 const isSavingItem = ref(false)
-const editingItem = ref<ShoppingItem | null>(null) // Estado para o item em edição
+const editingItem = ref<ShoppingItem | null>(null)
 
 const groupedItems = computed(() => {
   const groups: Record<string, any[]> = {}

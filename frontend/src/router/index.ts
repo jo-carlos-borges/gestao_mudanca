@@ -7,6 +7,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import TaskView from '@/views/TaskView.vue'
 import ShoppingView from '@/views/ShoppingView.vue';
+import BudgetView from '@/views/BudgetView.vue';
 
 
 const router = createRouter({
@@ -25,6 +26,7 @@ const router = createRouter({
         { path: 'dashboard', name: 'Dashboard', component: DashboardView },
         { path: 'tarefas', name: 'Tarefas', component: TaskView },
         { path: 'compras', name: 'Compras', component: ShoppingView },
+        { path: 'orcamentos', name: 'Orçamentos', component: BudgetView },
         { path: 'usuarios', name: 'Usuarios', component: UserView, meta: { requiresAdmin: true } },
       ],
     },

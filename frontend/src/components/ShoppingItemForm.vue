@@ -9,7 +9,7 @@ const props = defineProps<{
   isOpen: boolean
   loading: boolean
   rooms: Room[]
-  item: ShoppingItem | null // Prop para receber o item a ser editado
+  item: ShoppingItem | null
 }>()
 
 const internalOpen = ref(props.isOpen)
@@ -37,7 +37,6 @@ const priorityOptions = [
 watch(() => props.isOpen, (val) => {
   internalOpen.value = val
   if (!val) {
-    // Limpa o formulário ao fechar, mas de forma suave
      setTimeout(() => formRef.value?.resetValidation(), 100)
   }
 })
@@ -65,7 +64,7 @@ async function submit() {
   if (!valid) return
 
   const payload = {
-    id: props.item?.id, // Envia o ID se estiver editando
+    id: props.item?.id,
     name: name.value,
     quantity: quantity.value,
     status: status.value,
